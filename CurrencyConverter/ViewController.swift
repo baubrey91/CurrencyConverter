@@ -52,7 +52,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        serviceCall(urlString: "https://api.fixer.io/latest?base=\(currentCountry)")
+        HttpService.getJSON("https://api.fixer.io/latest?base=\(currentCountry)")
+        //serviceCall(urlString: "https://api.fixer.io/latest?base=\(currentCountry)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,31 +10,47 @@ import Foundation
 import UIKit
 
 class HttpService {
-    
-    
-    //didnt finish
-    class func serviceCall(urlString: String) {
-        
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with:url!) { (data, response, error) in
-            if error != nil {
-                
-                print(error!)
-            } else {
-                do {
-                    
-                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:Any]
-                    let rates = parsedData["rates"] as? NSDictionary
-                    rateDic = rates!
-                    
-                    
-                } catch let error as NSError {
-                    print(error)
-
-                }
+   /* class func getJSON(_ url: String, callback:@escaping ((NSArray) -> Void)) {
+        let nsURL = URL(string: url)!
+        let session = URLSession.shared
+        let task = session.dataTask(with: nsURL, completionHandler: { data, response, error -> Void in
+            
+            if error != nil{
+                print("error")
             }
             
-            }.resume()
+            if data != nil {
+                let jsonData = (try! JSONSerialization.jsonObject( with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)) as! [String:Any]
+                let rates = jsonData["rates"] as? NSDictionary
+                rateDic = rates!
+            }
+            
+            session.invalidateAndCancel()
+            
+        })
+        task.resume()
+    }*/
+    
+    class func getJSON(_ url: String) {
+        let nsURL = URL(string: url)!
+        let session = URLSession.shared
+        let task = session.dataTask(with: nsURL, completionHandler: { data, response, error -> Void in
+            
+            if error != nil{
+                print("error")
+            }
+            
+            if data != nil {
+                let jsonData = (try! JSONSerialization.jsonObject( with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)) as! [String:Any]
+                let rates = jsonData["rates"] as? NSDictionary
+                rateDic = rates!
+            }
+            
+            session.invalidateAndCancel()
+            
+        })
+        task.resume()
     }
 }
+
 
