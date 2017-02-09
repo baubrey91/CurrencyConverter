@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39C29C761E25DDFE003AF854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C751E25DDFE003AF854 /* AppDelegate.swift */; };
-		39C29C781E25DDFE003AF854 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C771E25DDFE003AF854 /* ViewController.swift */; };
+		39C29C781E25DDFE003AF854 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C771E25DDFE003AF854 /* HomeViewController.swift */; };
 		39C29C7B1E25DDFE003AF854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C29C791E25DDFE003AF854 /* Main.storyboard */; };
 		39C29C7E1E25DDFE003AF854 /* CurrencyConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C7C1E25DDFE003AF854 /* CurrencyConverter.xcdatamodeld */; };
 		39C29C801E25DDFE003AF854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C29C7F1E25DDFE003AF854 /* Assets.xcassets */; };
@@ -19,6 +19,7 @@
 		39C29CA91E270536003AF854 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29CA81E270536003AF854 /* HTTPService.swift */; };
 		39C29CAB1E2714B3003AF854 /* RateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29CAA1E2714B3003AF854 /* RateTableCell.swift */; };
 		39C29CAD1E285D31003AF854 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29CAC1E285D31003AF854 /* ConverterViewController.swift */; };
+		CAED41651E4BF6C300728C24 /* HomeCollection:Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 /* Begin PBXFileReference section */
 		39C29C721E25DDFE003AF854 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C29C751E25DDFE003AF854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		39C29C771E25DDFE003AF854 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		39C29C771E25DDFE003AF854 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		39C29C7A1E25DDFE003AF854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		39C29C7D1E25DDFE003AF854 /* CurrencyConverter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CurrencyConverter.xcdatamodel; sourceTree = "<group>"; };
 		39C29C7F1E25DDFE003AF854 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		39C29CA81E270536003AF854 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		39C29CAA1E2714B3003AF854 /* RateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateTableCell.swift; sourceTree = "<group>"; };
 		39C29CAC1E285D31003AF854 /* ConverterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
+		CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCollection:Table.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,8 @@
 				39C29CA61E25E12E003AF854 /* CountryCurrency.swift */,
 				39C29CA81E270536003AF854 /* HTTPService.swift */,
 				39C29CAA1E2714B3003AF854 /* RateTableCell.swift */,
-				39C29C771E25DDFE003AF854 /* ViewController.swift */,
+				39C29C771E25DDFE003AF854 /* HomeViewController.swift */,
+				CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */,
 				39C29C791E25DDFE003AF854 /* Main.storyboard */,
 				39C29C7F1E25DDFE003AF854 /* Assets.xcassets */,
 				39C29C811E25DDFE003AF854 /* LaunchScreen.storyboard */,
@@ -278,9 +281,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C29CA91E270536003AF854 /* HTTPService.swift in Sources */,
-				39C29C781E25DDFE003AF854 /* ViewController.swift in Sources */,
+				39C29C781E25DDFE003AF854 /* HomeViewController.swift in Sources */,
 				39C29C761E25DDFE003AF854 /* AppDelegate.swift in Sources */,
 				39C29C7E1E25DDFE003AF854 /* CurrencyConverter.xcdatamodeld in Sources */,
+				CAED41651E4BF6C300728C24 /* HomeCollection:Table.swift in Sources */,
 				39C29CAB1E2714B3003AF854 /* RateTableCell.swift in Sources */,
 				39C29CAD1E285D31003AF854 /* ConverterViewController.swift in Sources */,
 				39C29CA71E25E12E003AF854 /* CountryCurrency.swift in Sources */,
@@ -534,6 +538,7 @@
 				39C29C9F1E25DDFE003AF854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39C29CA01E25DDFE003AF854 /* Build configuration list for PBXNativeTarget "CurrencyConverterTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +547,7 @@
 				39C29CA21E25DDFE003AF854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39C29CA31E25DDFE003AF854 /* Build configuration list for PBXNativeTarget "CurrencyConverterUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +556,7 @@
 				39C29CA51E25DDFE003AF854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
