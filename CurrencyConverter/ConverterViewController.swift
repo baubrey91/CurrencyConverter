@@ -16,6 +16,7 @@ class ConverterViewController : UIViewController {
     var currency2 =         ""
     var currency1Value =    1.00
     var currency2Value =    1.00
+    var canConvert =        true
     
     @IBOutlet weak var currency1Label:  UILabel!
     @IBOutlet weak var currency2Label:  UILabel!
@@ -23,7 +24,19 @@ class ConverterViewController : UIViewController {
     @IBOutlet weak var currency2TF:     UITextField!
 
     override func viewDidLoad() {
-        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
+                                               object: currency1TF,
+                                               queue: OperationQueue.main,
+                                               using: { _ in
+                                                if self.currency1TF.text == "" {
+                                                    self.canConvert = false
+                                                    self.currency1TF.layer.borderWidth = 2
+                                                    self.currency1TF.layer.borderColor = UIColor.red.cgColor
+                                                } else {
+                                                    self.currency1TF.layer.borderWidth = 0
+                                                    self.canConvert = true
+                                                }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,8 +48,16 @@ class ConverterViewController : UIViewController {
     }
     
     @IBAction func convertButton(_ sender: Any) {
+        if canConvert {
+            currency2Value = Double(currency1TF.text!)! * rate
+            currency2TF.text = String(currency2Value)
+        }
+        else {
+            print("disabled")
+        }
+    }
+    
+    deinit {
         
-        currency2Value = Double(currency1TF.text!)! * rate
-        currency2TF.text = String(currency2Value)
     }
 }

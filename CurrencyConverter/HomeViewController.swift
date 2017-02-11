@@ -8,51 +8,24 @@
 
 import UIKit
 
-var rateDic: NSDictionary = [:]
-
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
-    var currentCountry = "AUD"
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    let countryArray = ["AUD",
-                        "BGN",
-                        "BRL",
-                        "CAD",
-                        "CHF",
-                        "CNY",
-                        "CZK",
-                        "DKK",
-                        "EUR",
-                        "GBP",
-                        "HKD",
-                        "HRK",
-                        "HUF",
-                        "IDR",
-                        "ILS",
-                        "INR",
-                        "JPY",
-                        "KRW",
-                        "MXN",
-                        "MYR",
-                        "NOK",
-                        "NZD",
-                        "PHP",
-                        "PLN",
-                        "RON",
-                        "RUB",
-                        "SEK",
-                        "SGD",
-                        "THB",
-                        "TRY",
-                        "USD",
-                        "ZAR"]
+    var rateDic: NSDictionary = [:]
+    var currentCountry = "AUD" {
+        didSet {
+            self.title = currentCountry
+        }
+    }
+    let countryArray = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        HttpService.getJSON("https://api.fixer.io/latest?base=\(currentCountry)")
-        tableView.reloadData()
+        self.title = currentCountry
+        loadCurrency()
+        loadLatest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +34,23 @@ class HomeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadCurrency() {
+        ServiceCall.getJSON((LATEST_URL + currentCountry), completionHandler: {
+            json in DispatchQueue.main.async {
+                let rates = json["rates"] as? NSDictionary
+                self.rateDic = rates!
+                self.tableView.reloadData()
+            }
+        })
+    }
+    func loadLatest() {
+        ServiceCall.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
+            json in DispatchQueue.main.async {
+                print(json)
+            }
+        })
     }
 }
 
