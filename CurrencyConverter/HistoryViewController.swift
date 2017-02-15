@@ -19,11 +19,13 @@ class HistoryViewController: HomeViewController {
     }*/
     
     override func loadCurrency() {
+        activityMonitor.startAnimating()
         Service.sharedInstance.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
             json in DispatchQueue.main.async{
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
                 self.tableView.reloadData()
+                self.activityMonitor.stopAnimating()
             }
         })
     }

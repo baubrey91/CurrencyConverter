@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
-class ConverterViewController : UIViewController {
+class ConverterViewController : UIViewController, UITextFieldDelegate {
     
     //MARK: -Variables/connections
     var cr = CurrencyRate(CurrencyOne: "error", CurrencyTwo: "error", CountryOne: "error", CountryTwo: "error", Rate: 0)
+    
+    var calculatedValue:Double = 0 {
+        didSet {
+            currency2TF.text = String(calculatedValue)
+        }
+    }
     
     @IBOutlet weak var currency1Label:  UILabel!
     @IBOutlet weak var currency2Label:  UILabel!
@@ -22,19 +28,7 @@ class ConverterViewController : UIViewController {
     @IBOutlet weak var flag2:           UIImageView!
 
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
-                                               object: currency1TF,
-                                               queue: OperationQueue.main,
-                                               using: { _ in
-                                                if (self.currency1TF.text?.isEmpty)! {
-                                                    self.currency1TF.layer.borderWidth = 2
-                                                    self.currency1TF.layer.borderColor = UIColor.red.cgColor
-                                                } else {
-                                                    self.currency1TF.layer.borderWidth = 0
-                                                    self.currency2TF.text = String(Double(self.currency1TF.text!)! * self.cr.rate)
-                                                    
-                                                }
-        })
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +43,23 @@ class ConverterViewController : UIViewController {
         flag2.image =           UIImage(named: flgImageTwo)
     }
     
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let existingTextHasDecimalSeparator = currency1TF.text?.range(of: ".")
+        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        
+        return (existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil) ? false : true
     }
+    
+    @IBAction func currencyOneTFChanged(textField: UITextField) {
+        
+        if (currency1TF.text?.isEmpty)! {
+            
+        }else {
+            let value = Double(currency1TF.text!)
+            calculatedValue = (cr.rate * value!)
+        }
+    }
+    
+    
 }

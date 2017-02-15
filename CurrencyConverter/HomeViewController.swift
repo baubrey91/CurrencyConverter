@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityMonitor: UIActivityIndicatorView!
     
     var rateDic: NSDictionary = [:]
     var currentCountry = "AUD" {
@@ -27,6 +28,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = currentCountry
+        activityMonitor.hidesWhenStopped = true
         countryArray = Array(countryDic.keys).sorted()
         loadCurrency()
     }
@@ -40,11 +42,13 @@ class HomeViewController: UIViewController {
     }
     
     func loadCurrency() {
+        activityMonitor.startAnimating()
         Service.sharedInstance.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
                 self.tableView.reloadData()
+                self.activityMonitor.stopAnimating()
             }
         })
     }
