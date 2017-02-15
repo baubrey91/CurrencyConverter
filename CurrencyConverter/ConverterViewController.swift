@@ -11,32 +11,27 @@ import UIKit
 
 class ConverterViewController : UIViewController {
     
-    var rate:Double =       1
-    var currency1 =         ""
-    var currency2 =         ""
-    var currency1Value =    1.00
-    var currency2Value =    1.00
-    var canConvert =        true
+    //MARK: -Variables/connections
+    var cr = CurrencyRate(CurrencyOne: "error", CurrencyTwo: "error", CountryOne: "error", CountryTwo: "error", Rate: 0)
     
     @IBOutlet weak var currency1Label:  UILabel!
     @IBOutlet weak var currency2Label:  UILabel!
     @IBOutlet weak var currency1TF:     UITextField!
     @IBOutlet weak var currency2TF:     UITextField!
+    @IBOutlet weak var flag1:           UIImageView!
+    @IBOutlet weak var flag2:           UIImageView!
 
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange,
                                                object: currency1TF,
                                                queue: OperationQueue.main,
                                                using: { _ in
-                                                if self.currency1TF.text == "" {
-                                                    self.canConvert = false
+                                                if (self.currency1TF.text?.isEmpty)! {
                                                     self.currency1TF.layer.borderWidth = 2
                                                     self.currency1TF.layer.borderColor = UIColor.red.cgColor
                                                 } else {
                                                     self.currency1TF.layer.borderWidth = 0
-                                                    self.canConvert = true
-                                                    self.currency2Value = Double(self.currency1TF.text!)! * self.rate
-                                                    self.currency2TF.text = String(self.currency2Value)
+                                                    self.currency2TF.text = String(Double(self.currency1TF.text!)! * self.cr.rate)
                                                     
                                                 }
         })
@@ -44,23 +39,18 @@ class ConverterViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        currency1Label.text =   currency1
-        currency2Label.text =   currency2
-        currency1TF.text =      String(currency1Value)
-        currency2TF.text =      String(currency2Value)
+        currency1Label.text =   cr.currencyOne
+        currency2Label.text =   cr.currencyTwo
+        currency1TF.text =      String(1.00)
+        currency2TF.text =      String(cr.rate * 1.00)
+        let flgImageOne =         cr.currencyOne
+        flag1.image =           UIImage(named: flgImageOne)
+        let flgImageTwo =         cr.currencyTwo
+        flag2.image =           UIImage(named: flgImageTwo)
     }
     
-    @IBAction func convertButton(_ sender: Any) {
-        if canConvert {
-            currency2Value = Double(currency1TF.text!)! * rate
-            currency2TF.text = String(currency2Value)
-        }
-        else {
-            print("disabled")
-        }
-    }
     
     deinit {
-        
+        NotificationCenter.default.removeObserver(self)
     }
 }

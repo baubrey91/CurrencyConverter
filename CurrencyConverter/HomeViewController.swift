@@ -23,14 +23,12 @@ class HomeViewController: UIViewController {
     //let countryArray = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"]
     var countryArray = [String]()
     let LATEST_URL   = "https://api.fixer.io/latest?base="
-    let HISTORY_URL  = "https://api.fixer.io/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = currentCountry
         countryArray = Array(countryDic.keys).sorted()
         loadCurrency()
-        loadLatest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,13 +45,6 @@ class HomeViewController: UIViewController {
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
                 self.tableView.reloadData()
-            }
-        })
-    }
-    func loadLatest() {
-        Service.sharedInstance.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
-            json in DispatchQueue.main.async {
-                print(json)
             }
         })
     }

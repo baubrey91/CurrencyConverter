@@ -30,13 +30,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let rate = rateDic[countryArray[indexPath.row]] else {
+            return
+        }
+        let currencyTwo = countryArray[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "converterViewController") as! ConverterViewController
-        vc.rate = rateDic[countryArray[indexPath.row]] as! Double
-        vc.currency1 = currentCountry
-        vc.currency1Value = 1.00
-        vc.currency2 = countryArray[indexPath.row]
-        vc.currency2Value = rateDic[countryArray[indexPath.row]] as! Double
+        let cr = CurrencyRate(CurrencyOne: currentCountry, CurrencyTwo: currencyTwo, CountryOne: countryDic[currentCountry]!, CountryTwo: countryDic[currencyTwo]!, Rate: rate as! Double)
+        vc.cr = cr
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
