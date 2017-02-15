@@ -1,5 +1,5 @@
 //
-//  HTTPService.swift
+//  Service.swift
 //  CurrencyConverter
 //
 //  Created by Brandon Aubrey on 1/12/17.
@@ -7,10 +7,12 @@
 //
 
 import Foundation
-import UIKit
 
-class ServiceCall {
-    class func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
+public class Service {
+    
+    public static let sharedInstance = ServiceCall()
+    
+    public func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
         let nsURL = URL(string: url)!
         let session = URLSession.shared
         let task = session.dataTask(with: nsURL, completionHandler: { data, response, error -> Void in

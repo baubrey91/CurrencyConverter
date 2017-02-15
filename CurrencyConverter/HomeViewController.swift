@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadCurrency() {
-        ServiceCall.getJSON((LATEST_URL + currentCountry), completionHandler: {
+        Service.sharedInstance.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
@@ -46,14 +46,10 @@ class HomeViewController: UIViewController {
         })
     }
     func loadLatest() {
-        ServiceCall.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
+        Service.sharedInstance.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
             json in DispatchQueue.main.async {
                 print(json)
             }
         })
     }
 }
-
-
-
-
