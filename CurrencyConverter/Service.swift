@@ -9,8 +9,8 @@
 import Foundation
 
 public class Service {
-    
-    public static let sharedInstance = ServiceCall()
+
+    public static let sharedInstance = Service()
     
     public func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
         let nsURL = URL(string: url)!

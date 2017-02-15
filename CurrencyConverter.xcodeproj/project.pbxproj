@@ -20,7 +20,6 @@
 		CAED41651E4BF6C300728C24 /* HomeCollection:Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */; };
 		CAED41671E4CDC5F00728C24 /* FlagCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED41661E4CDC5F00728C24 /* FlagCollectionCell.swift */; };
 		CAED41691E4CE65200728C24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAED41681E4CE65200728C24 /* Images.xcassets */; };
-		CAED416C1E4E90B100728C24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAED416B1E4E90B100728C24 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCollection:Table.swift"; sourceTree = "<group>"; };
 		CAED41661E4CDC5F00728C24 /* FlagCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagCollectionCell.swift; sourceTree = "<group>"; };
 		CAED41681E4CE65200728C24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CAED416B1E4E90B100728C24 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				39C29C751E25DDFE003AF854 /* AppDelegate.swift */,
-				CAED416B1E4E90B100728C24 /* Constants.swift */,
 				CAED41681E4CE65200728C24 /* Images.xcassets */,
 				39C29C811E25DDFE003AF854 /* LaunchScreen.storyboard */,
 				39C29C841E25DDFE003AF854 /* Info.plist */,
@@ -299,7 +296,6 @@
 				39C29CAB1E2714B3003AF854 /* RateTableCell.swift in Sources */,
 				39C29CAD1E285D31003AF854 /* ConverterViewController.swift in Sources */,
 				39C29CA71E25E12E003AF854 /* CountryCurrency.swift in Sources */,
-				CAED416C1E4E90B100728C24 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

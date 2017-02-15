@@ -19,11 +19,16 @@ class HomeViewController: UIViewController {
             self.title = currentCountry
         }
     }
-    let countryArray = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"]
-
+    let countryDic : [String:String] = ["AUD":"Australia", "BGN":"Bulgaria", "BRL":"Brazil", "CAD":"Canada", "CHF":"Switzerland", "CNY":"Chinese Yuan", "CZK":"Czech Republic", "DKK":"Denmark", "EUR":"Euro", "GBP":"British Pound", "HKD":"Hong Kong Dollar", "HRK":"Croatia", "HUF":"Hungary", "IDR":"Indonesia", "ILS":"Israel", "INR":"India", "JPY":"Japan", "KRW":"South Korea", "MXN":"Mexico", "MYR":"Malaysia", "NOK":"Norway", "NZD":"New Zealand", "PHP":"Philippines", "PLN":"Poland", "RON":"Romania", "RUB":"Russia", "SEK":"Sweden", "SGD":"Singapore", "THB":"Thailand", "TRY":"Turkey", "USD":"United States", "ZAR":"South Africa"]
+    //let countryArray = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"]
+    var countryArray = [String]()
+    let LATEST_URL   = "https://api.fixer.io/latest?base="
+    let HISTORY_URL  = "https://api.fixer.io/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = currentCountry
+        countryArray = Array(countryDic.keys).sorted()
         loadCurrency()
         loadLatest()
     }

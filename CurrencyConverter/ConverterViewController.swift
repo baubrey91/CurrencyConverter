@@ -35,6 +35,9 @@ class ConverterViewController : UIViewController {
                                                 } else {
                                                     self.currency1TF.layer.borderWidth = 0
                                                     self.canConvert = true
+                                                    self.currency2Value = Double(self.currency1TF.text!)! * self.rate
+                                                    self.currency2TF.text = String(self.currency2Value)
+                                                    
                                                 }
         })
     }

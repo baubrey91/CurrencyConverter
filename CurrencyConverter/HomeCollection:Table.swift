@@ -13,7 +13,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
         
-        cell.countryLabel.text = countryArray[indexPath.row]
+        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]! 
         
         if let rate = rateDic[countryArray[indexPath.row]]  {
             cell.rateLabel.text = String(describing: rate)
