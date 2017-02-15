@@ -9,20 +9,36 @@
 import Foundation
 import UIKit
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: HomeViewController {
     let HISTORY_URL  = "https://api.fixer.io/"
 
     
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
-        loadLatest()
-    }
+        loadCurrenct()
+    }*/
     
-    func loadLatest() {
+    override func loadCurrency() {
         Service.sharedInstance.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
-            json in DispatchQueue.main.async {
-                print(json)
+            json in DispatchQueue.main.async{
+                let rates = json["rates"] as? NSDictionary
+                self.rateDic = rates!
+                self.tableView.reloadData()
             }
         })
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
+        
+        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]!
+        
+        if let rate = rateDic[countryArray[indexPath.row]]  {
+            cell.rateLabel.text = String(describing: rate)
+        } else {
+            cell.rateLabel.text = "-"
+        }
+        
+        return cell
     }
 }

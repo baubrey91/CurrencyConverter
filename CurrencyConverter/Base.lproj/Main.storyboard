@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="1926" y="-339"/>
         </scene>
-        <!--Item-->
+        <!--History View Controller-->
         <scene sceneID="dII-GZ-jef">
             <objects>
                 <viewController id="oY7-e3-gvP" customClass="HistoryViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,16 +157,53 @@
                                 <rect key="frame" x="0.0" y="113" width="375" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RateTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="RateTableCell" id="sRz-Pb-w9f" customClass="RateTableCell" customModule="CurrencyConverter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRz-Pb-w9f" id="aXz-2f-aMd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bym-rJ-yom">
+                                                    <rect key="frame" x="8" y="8" width="62" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmo-fq-ghj">
+                                                    <rect key="frame" x="211" y="7" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countryLabel" destination="Bym-rJ-yom" id="f8p-yo-qNZ"/>
+                                            <outlet property="rateLabel" destination="gmo-fq-ghj" id="wc8-XB-P7J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oY7-e3-gvP" id="SSU-7g-wsE"/>
+                                    <outlet property="delegate" destination="oY7-e3-gvP" id="9Eq-lt-nzt"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="udV-4c-T2m"/>
+                    <navigationItem key="navigationItem" id="3ZH-4A-vqh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="8zS-g0-tGv" id="ysQ-q7-1N5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRP-Aq-ogn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="425.93703148425789"/>
+            <point key="canvasLocation" x="1925.5999999999999" y="425.93703148425789"/>
         </scene>
         <!--Converter View Controller-->
         <scene sceneID="A97-EX-SFn">
@@ -231,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quj-hV-iNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2730" y="-340"/>
+            <point key="canvasLocation" x="2719" y="63"/>
         </scene>
         <!--Item-->
         <scene sceneID="CWj-E3-2Mp">
@@ -263,12 +300,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="d2u-uD-7HI" kind="relationship" relationship="viewControllers" id="qqG-0h-gbu"/>
-                        <segue destination="oY7-e3-gvP" kind="relationship" relationship="viewControllers" id="rXR-s3-UlQ"/>
+                        <segue destination="ndh-VS-uTn" kind="relationship" relationship="viewControllers" id="rXR-s3-UlQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uow-m0-XsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130" y="63"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="8FY-Sx-y4U">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ndh-VS-uTn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="udV-4c-T2m"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQN-s6-a3G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oY7-e3-gvP" kind="relationship" relationship="rootViewController" id="Wnl-92-IWP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fun-oP-yrs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="426"/>
         </scene>
     </scenes>
 </document>

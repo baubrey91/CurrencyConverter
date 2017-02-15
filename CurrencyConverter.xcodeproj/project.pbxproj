@@ -88,6 +88,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39BE07471E54208900A73413 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39C29CA61E25E12E003AF854 /* CurrencyRate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		39BE07481E54209F00A73413 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				39C29CAC1E285D31003AF854 /* ConverterViewController.swift */,
+				39BE074A1E5420B100A73413 /* History */,
+				39BE07491E5420AD00A73413 /* Home */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		39BE07491E5420AD00A73413 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */,
+				39C29C771E25DDFE003AF854 /* HomeViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		39BE074A1E5420B100A73413 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				39BE07451E541D9B00A73413 /* HistoryViewController.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		39BE074B1E5420E500A73413 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAED41661E4CDC5F00728C24 /* FlagCollectionCell.swift */,
+				39C29CAA1E2714B3003AF854 /* RateTableCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		39C29C691E25DDFD003AF854 = {
 			isa = PBXGroup;
 			children = (
@@ -111,13 +155,9 @@
 		39C29C741E25DDFE003AF854 /* CurrencyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				39C29CAC1E285D31003AF854 /* ConverterViewController.swift */,
-				39C29CA61E25E12E003AF854 /* CurrencyRate.swift */,
-				CAED41661E4CDC5F00728C24 /* FlagCollectionCell.swift */,
-				39BE07451E541D9B00A73413 /* HistoryViewController.swift */,
-				CAED41641E4BF6C300728C24 /* HomeCollection:Table.swift */,
-				39C29C771E25DDFE003AF854 /* HomeViewController.swift */,
-				39C29CAA1E2714B3003AF854 /* RateTableCell.swift */,
+				39BE074B1E5420E500A73413 /* Views */,
+				39BE07481E54209F00A73413 /* Controllers */,
+				39BE07471E54208900A73413 /* Model */,
 				39C29CA81E270536003AF854 /* Service.swift */,
 				39C29C791E25DDFE003AF854 /* Main.storyboard */,
 				CAED416A1E4CF02600728C24 /* Other */,
