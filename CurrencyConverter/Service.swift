@@ -8,11 +8,12 @@
 
 import Foundation
 
-public class Service {
-
-    public static let sharedInstance = Service()
+class Service {
     
-    public func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
+    static let sharedInstance = Service()
+    
+    
+    func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
         let nsURL = URL(string: url)!
         let session = URLSession.shared
         let task = session.dataTask(with: nsURL, completionHandler: { data, response, error -> Void in
@@ -26,6 +27,7 @@ public class Service {
             session.invalidateAndCancel()
         })
         task.resume()
+        
     }
 }
 

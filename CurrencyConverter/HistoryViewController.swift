@@ -15,11 +15,11 @@ class HistoryViewController: HomeViewController {
     
     /*override func viewDidLoad() {
         super.viewDidLoad()
-        loadCurrenct()
+        loadCurrency()
     }*/
     
     override func loadCurrency() {
-        Service.sharedInstance.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
+        service.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
             json in DispatchQueue.main.async{
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!

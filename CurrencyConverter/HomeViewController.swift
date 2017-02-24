@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let service = Service.sharedInstance
+    
     var rateDic: NSDictionary = [:]
     var currentCountry = "AUD" {
         didSet {
@@ -40,7 +42,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadCurrency() {
-        Service.sharedInstance.getJSON((LATEST_URL + currentCountry), completionHandler: {
+        service.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
