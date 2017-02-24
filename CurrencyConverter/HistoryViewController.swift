@@ -11,9 +11,11 @@ import UIKit
 
 class HistoryViewController: HomeViewController {
     let HISTORY_URL  = "https://api.fixer.io/"
-
+    var dateFormatter = DateFormatter()
+    let today = NSDate() as Date
+    var strDate = ""
     
-    /*override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         loadCurrency()
     }*/
@@ -24,6 +26,7 @@ class HistoryViewController: HomeViewController {
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!
                 self.tableView.reloadData()
+                self.activityMonitor.stopAnimating()
             }
         })
     }
@@ -42,3 +45,5 @@ class HistoryViewController: HomeViewController {
         return cell
     }
 }
+
+

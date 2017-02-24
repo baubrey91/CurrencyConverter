@@ -13,7 +13,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -98,7 +98,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.3803921569" green="0.70196078429999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="brV-xj-OE2" firstAttribute="leading" secondItem="75M-m6-raA" secondAttribute="leadingMargin" constant="8" id="3BU-it-GNb"/>
                                             <constraint firstItem="fzY-Wm-bnl" firstAttribute="leading" secondItem="75M-m6-raA" secondAttribute="leadingMargin" constant="-5" id="CmK-2j-cTU"/>
@@ -118,8 +118,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Pep-Je-8Nd"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hES-tM-Y2m">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0078431372550000003" green="0.41960784309999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mk4-f6-1Q1" firstAttribute="leading" secondItem="EfQ-qJ-1AH" secondAttribute="leading" id="5Ae-Rt-WqD"/>
                             <constraint firstItem="mk4-f6-1Q1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="971-Mf-ajn"/>
@@ -133,6 +137,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="Uho-QM-THm"/>
                     <navigationItem key="navigationItem" id="UiP-u0-Elv"/>
                     <connections>
+                        <outlet property="activityMonitor" destination="hES-tM-Y2m" id="sXU-dT-1tl"/>
                         <outlet property="collectionView" destination="mk4-f6-1Q1" id="T3f-vy-61p"/>
                         <outlet property="tableView" destination="EfQ-qJ-1AH" id="fD0-Fu-lf8"/>
                     </connections>
@@ -144,7 +149,7 @@
         <!--History View Controller-->
         <scene sceneID="dII-GZ-jef">
             <objects>
-                <viewController id="oY7-e3-gvP" customClass="HistoryViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="oY7-e3-gvP" customClass="HistoryViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FIN-gI-NyW"/>
                         <viewControllerLayoutGuide type="bottom" id="P1u-3L-KqR"/>
@@ -153,33 +158,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8zS-g0-tGv">
-                                <rect key="frame" x="0.0" y="113" width="375" height="505"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8zS-g0-tGv">
+                                <rect key="frame" x="0.0" y="211" width="375" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RateTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="RateTableCell" id="sRz-Pb-w9f" customClass="RateTableCell" customModule="CurrencyConverter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RateTableCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RateTableCell" id="sRz-Pb-w9f" customClass="RateTableCell" customModule="CurrencyConverter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRz-Pb-w9f" id="aXz-2f-aMd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bym-rJ-yom">
-                                                    <rect key="frame" x="8" y="8" width="62" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bym-rJ-yom">
+                                                    <rect key="frame" x="8" y="8" width="198" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmo-fq-ghj">
-                                                    <rect key="frame" x="211" y="7" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmo-fq-ghj">
+                                                    <rect key="frame" x="214" y="14" width="120" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Bym-rJ-yom" firstAttribute="leading" secondItem="aXz-2f-aMd" secondAttribute="leadingMargin" id="8zE-WG-Xxj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gmo-fq-ghj" secondAttribute="trailing" constant="88" id="kLZ-GH-l0R"/>
+                                                <constraint firstItem="Bym-rJ-yom" firstAttribute="top" secondItem="aXz-2f-aMd" secondAttribute="topMargin" id="rOl-cy-F5c"/>
+                                                <constraint firstItem="gmo-fq-ghj" firstAttribute="top" secondItem="aXz-2f-aMd" secondAttribute="topMargin" constant="-1" id="vIG-lc-ZiZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="countryLabel" destination="Bym-rJ-yom" id="f8p-yo-qNZ"/>
@@ -192,12 +200,49 @@
                                     <outlet property="delegate" destination="oY7-e3-gvP" id="9Eq-lt-nzt"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iq3-FP-p5M">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.0078431372550000003" green="0.41960784309999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rko-UT-UsB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="139" id="G2N-rv-YL4"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="508985404.15046299">
+                                    <!--2017-02-17 00:50:04 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePicked:" destination="oY7-e3-gvP" eventType="valueChanged" id="E4C-KP-0mk"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Only Euro's have history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fP-xt-Wwe">
+                                <rect key="frame" x="8" y="589" width="192" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rko-UT-UsB" firstAttribute="top" secondItem="FIN-gI-NyW" secondAttribute="bottom" id="01E-5x-RAz"/>
+                            <constraint firstItem="Rko-UT-UsB" firstAttribute="trailing" secondItem="8zS-g0-tGv" secondAttribute="trailing" id="5WC-ya-twB"/>
+                            <constraint firstItem="5fP-xt-Wwe" firstAttribute="leading" secondItem="WzU-u1-EN9" secondAttribute="leadingMargin" constant="-8" id="ApW-Ig-QBC"/>
+                            <constraint firstAttribute="trailing" secondItem="Rko-UT-UsB" secondAttribute="trailing" id="GZA-IO-3LA"/>
+                            <constraint firstItem="Rko-UT-UsB" firstAttribute="centerX" secondItem="iq3-FP-p5M" secondAttribute="centerX" id="LKq-OT-WZh"/>
+                            <constraint firstItem="5fP-xt-Wwe" firstAttribute="top" secondItem="8zS-g0-tGv" secondAttribute="bottom" constant="8" symbolic="YES" id="NI3-8K-MTB"/>
+                            <constraint firstItem="Rko-UT-UsB" firstAttribute="leading" secondItem="8zS-g0-tGv" secondAttribute="leading" id="QsR-u5-9Vd"/>
+                            <constraint firstItem="8zS-g0-tGv" firstAttribute="top" secondItem="Rko-UT-UsB" secondAttribute="bottom" constant="8" symbolic="YES" id="W2u-Yf-VC6"/>
+                            <constraint firstItem="P1u-3L-KqR" firstAttribute="top" secondItem="5fP-xt-Wwe" secondAttribute="bottom" constant="8" symbolic="YES" id="aJT-nR-SOZ"/>
+                            <constraint firstItem="Rko-UT-UsB" firstAttribute="leading" secondItem="WzU-u1-EN9" secondAttribute="leading" id="fkZ-Jm-pLC"/>
+                            <constraint firstItem="iq3-FP-p5M" firstAttribute="centerY" secondItem="WzU-u1-EN9" secondAttribute="centerY" id="iye-t5-rNY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ZH-4A-vqh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityMonitor" destination="iq3-FP-p5M" id="QuO-t9-C2z"/>
+                        <outlet property="datePicker" destination="Rko-UT-UsB" id="ish-2w-Dee"/>
                         <outlet property="tableView" destination="8zS-g0-tGv" id="ysQ-q7-1N5"/>
                     </connections>
                 </viewController>
@@ -218,7 +263,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bbX-TB-qiP">
-                                <rect key="frame" x="236" y="130" width="97" height="30"/>
+                                <rect key="frame" x="209" y="130" width="166" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -232,18 +277,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlG-3C-qag">
-                                <rect key="frame" x="43" y="130" width="97" height="30"/>
+                                <rect key="frame" x="0.0" y="130" width="166" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="currencyOneTFChangedWithTextField:" destination="BdZ-7d-HRq" eventType="editingChanged" id="t9y-Md-kaY"/>
+                                    <outlet property="delegate" destination="BdZ-7d-HRq" id="dPR-Bp-Vjj"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uO-qR-l3e">
                                 <rect key="frame" x="16" y="205" width="150" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYv-4I-Pz6">
-                                <rect key="frame" x="209" y="205" width="150" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY6-gx-5Kc">
@@ -253,22 +298,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYv-4I-Pz6">
+                                <rect key="frame" x="209" y="205" width="150" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rtf-oV-PgG"/>
                     <connections>
-                        <outlet property="currency1Label" destination="NY6-gx-5Kc" id="p1s-vK-ekn"/>
-                        <outlet property="currency1TF" destination="tlG-3C-qag" id="GBA-tA-hyg"/>
-                        <outlet property="currency2Label" destination="Vt6-GZ-lQn" id="ixe-HA-mDI"/>
-                        <outlet property="currency2TF" destination="bbX-TB-qiP" id="d1w-ky-MMH"/>
-                        <outlet property="flag1" destination="9uO-qR-l3e" id="zpP-8a-J5X"/>
-                        <outlet property="flag2" destination="LYv-4I-Pz6" id="Z69-Qa-mMu"/>
+                        <outlet property="currencyOneLabel" destination="NY6-gx-5Kc" id="XbF-lT-hxc"/>
+                        <outlet property="currencyOneTF" destination="tlG-3C-qag" id="2d5-HL-U9N"/>
+                        <outlet property="currencyTwoLabel" destination="Vt6-GZ-lQn" id="VId-0i-38M"/>
+                        <outlet property="currencyTwoTF" destination="bbX-TB-qiP" id="DNr-an-Ta7"/>
+                        <outlet property="flagOne" destination="9uO-qR-l3e" id="Srg-tF-Wkh"/>
+                        <outlet property="flagTwo" destination="LYv-4I-Pz6" id="nor-3X-SQZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quj-hV-iNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="63"/>
+            <point key="canvasLocation" x="2717.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Item-->
         <scene sceneID="CWj-E3-2Mp">
@@ -295,6 +344,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="sQK-eL-zxF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZQl-wQ-Y9h">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
