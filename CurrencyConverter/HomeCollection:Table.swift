@@ -21,7 +21,23 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.rateLabel.text = "-"
         }
         
+        setCellColor(cell: cell, blackBackground: (indexPath.row % 2 == 0))
+        
         return cell
+    }
+    
+    func setCellColor(cell: RateTableCell, blackBackground: Bool) {
+        
+        if (blackBackground) {
+            cell.backgroundColor = UIColor.black
+            cell.countryLabel.textColor = UIColor.white
+            cell.rateLabel.textColor = UIColor.white
+        } else {
+            cell.backgroundColor = UIColor.lightGray
+            cell.countryLabel.textColor = UIColor.black
+            cell.rateLabel.textColor = UIColor.black
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

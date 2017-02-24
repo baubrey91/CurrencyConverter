@@ -26,9 +26,12 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var currencyTwoTF:     UITextField!
     @IBOutlet weak var flagOne:           UIImageView!
     @IBOutlet weak var flagTwo:           UIImageView!
+    @IBOutlet weak var backgroundImage:   UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImage.addBlurEffect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,3 +61,15 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
     }
 }
 
+extension UIImageView
+{
+    func addBlurEffect()
+    {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.layer.opacity = 0.75
+        blurEffectView.frame = self.bounds
+
+        self.addSubview(blurEffectView)
+    }
+}

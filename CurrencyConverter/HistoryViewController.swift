@@ -61,6 +61,8 @@ class HistoryViewController: HomeViewController {
             cell.rateLabel.text = "-"
         }
         
+        setCellColor(cell: cell, blackBackground: (indexPath.row % 2 == 0))
+
         return cell
     }
 }
