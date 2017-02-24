@@ -13,15 +13,34 @@ class HistoryViewController: HomeViewController {
     let HISTORY_URL  = "https://api.fixer.io/"
     var dateFormatter = DateFormatter()
     let today = NSDate() as Date
-    var strDate = ""
+    var strDate = "2001-01-01"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        strDate = dateFormatter.string(from: today)
+        datePicker.date = today
+        datePicker.maximumDate = today
+        strDate = dateFormatter.string(from: NSDate() as Date)
         loadCurrency()
-    }*/
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+
+
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBAction func datePicked(_ sender: Any) {
+        strDate = dateFormatter.string(from: datePicker.date)
+        loadCurrency()
+        //self.selectedDate.text = strDate
+    }
     
     override func loadCurrency() {
-        service.getJSON((HISTORY_URL + "2000-01-03"), completionHandler: {
+        activityMonitor.startAnimating()
+        service.getJSON((HISTORY_URL + strDate), completionHandler: {
             json in DispatchQueue.main.async{
                 let rates = json["rates"] as? NSDictionary
                 self.rateDic = rates!

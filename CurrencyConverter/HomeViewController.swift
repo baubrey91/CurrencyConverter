@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadCurrency() {
+        activityMonitor.startAnimating()
         service.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
                 let rates = json["rates"] as? NSDictionary
