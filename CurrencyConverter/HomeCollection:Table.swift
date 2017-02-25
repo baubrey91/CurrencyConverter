@@ -28,15 +28,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func setCellColor(cell: RateTableCell, blackBackground: Bool) {
         
-        if (blackBackground) {
-            cell.backgroundColor = UIColor.black
-            cell.countryLabel.textColor = UIColor.white
-            cell.rateLabel.textColor = UIColor.white
-        } else {
-            cell.backgroundColor = UIColor.lightGray
-            cell.countryLabel.textColor = UIColor.black
-            cell.rateLabel.textColor = UIColor.black
-        }
+        cell.backgroundColor = UIColor.clear
+        cell.countryLabel.textColor = UIColor.white
+        cell.rateLabel.textColor = UIColor.white
+//        if (blackBackground) {
+//            cell.backgroundColor = UIColor.black
+//            cell.countryLabel.textColor = UIColor.white
+//            cell.rateLabel.textColor = UIColor.white
+//        } else {
+//            cell.backgroundColor = UIColor.lightGray
+//            cell.countryLabel.textColor = UIColor.black
+//            cell.rateLabel.textColor = UIColor.black
+//        }
         
     }
     

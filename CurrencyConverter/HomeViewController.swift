@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityMonitor: UIActivityIndicatorView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     let service = Service.sharedInstance
     
@@ -32,6 +33,7 @@ class HomeViewController: UIViewController {
         self.title = currentCountry
         activityMonitor.hidesWhenStopped = true
         countryArray = Array(countryDic.keys).sorted()
+        backgroundImage.addBlurEffect()
         loadCurrency()
     }
     
