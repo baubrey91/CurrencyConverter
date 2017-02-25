@@ -35,6 +35,8 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currencyOneTF.tintColor = UIColor.clear
+        currencyOneTF.becomeFirstResponder()
         backgroundImage.addBlurEffect()
     }
     
@@ -45,7 +47,7 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
         if let logoTwo = currencyLogoDic[cr.currencyTwo]{
             currencyLogoTwo = logoTwo
         }
-        currencyOneTF.becomeFirstResponder()
+        
         currencyOneLabel.text =   currencyLogoOne + cr.currencyOne
         currencyTwoLabel.text =   cr.currencyTwo
         currencyOneTF.text =      String(1.00)
@@ -55,12 +57,20 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
         let flgImageTwo =         cr.currencyTwo
         flagTwo.image =           UIImage(named: flgImageTwo)
     }
+
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let existingTextHasDecimalSeparator = currencyOneTF.text?.range(of: ".")
         let replacementTextHasDecimalSeparator = string.range(of: ".")
+        if let characterCount = textField.text?.characters.count{
+            
+            if (characterCount > 10 && !string.isEmpty) {
+                return false
+            }
+        }
         
         return (existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil) ? false : true
+
     }
     
     @IBAction func currencyOneTFChanged(textField: UITextField) {
@@ -80,7 +90,7 @@ extension UIImageView
     {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.layer.opacity = 0.75
+        blurEffectView.layer.opacity = 0.85
         blurEffectView.frame = (superview?.bounds)!
 
         self.addSubview(blurEffectView)
