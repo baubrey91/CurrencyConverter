@@ -10,10 +10,20 @@ import Foundation
 import UIKit
 
 class HistoryViewController: HomeViewController {
+    
+    //MARK: variables
     let HISTORY_URL  = "https://api.fixer.io/"
     var dateFormatter = DateFormatter()
     let today = NSDate() as Date
     var strDate = "2001-01-01"
+
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBAction func datePicked(_ sender: Any) {
+        strDate = dateFormatter.string(from: datePicker.date)
+        loadCurrency()
+        //self.selectedDate.text = strDate
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +38,13 @@ class HistoryViewController: HomeViewController {
     override func viewWillAppear(_ animated: Bool) {
         
     }
-
-
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
-    @IBAction func datePicked(_ sender: Any) {
-        strDate = dateFormatter.string(from: datePicker.date)
-        loadCurrency()
-        //self.selectedDate.text = strDate
-    }
     
     override func loadCurrency() {
         activityMonitor.startAnimating()
         service.getJSON((HISTORY_URL + strDate), completionHandler: {
             json in DispatchQueue.main.async{
                 let rates = json["rates"] as? NSDictionary
-                self.rateDic = rates!
+                self.rateDic = rates! as! [String : Double]
                 self.tableView.reloadData()
                 self.activityMonitor.stopAnimating()
             }
@@ -52,16 +53,16 @@ class HistoryViewController: HomeViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
+        let imgString = countryArray[indexPath.row]
         
         cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]!
         
-        if let rate = rateDic[countryArray[indexPath.row]]  {
-            cell.rateLabel.text = String(describing: rate)
+        if let rate = rateDic[countryArray[indexPath.row]] {
+            cell.rateLabel.text = String(describing: rate.roundTo(places:4))
         } else {
             cell.rateLabel.text = "-"
         }
-        
-        setCellColor(cell: cell, blackBackground: (indexPath.row % 2 == 0))
+        cell.flagImage.image = UIImage(named: imgString)
 
         return cell
     }

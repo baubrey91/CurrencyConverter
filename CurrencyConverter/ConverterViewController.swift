@@ -18,6 +18,7 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
     var currencyLogoOne = "$"
     var currencyLogoTwo = "$"
     
+    
     var calculatedValue:Double = 0 {
         didSet {
             currencyTwoTF.text =  currencyLogoTwo + String(calculatedValue)
@@ -28,11 +29,14 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var currencyTwoLabel:  UILabel!
     @IBOutlet weak var currencyOneTF:     UITextField!
     @IBOutlet weak var currencyTwoTF:     UITextField!
+    @IBOutlet weak var countryOneLabel:   UILabel!
+    @IBOutlet weak var countryTwoLabel:   UILabel!
     @IBOutlet weak var flagOne:           UIImageView!
     @IBOutlet weak var flagTwo:           UIImageView!
     @IBOutlet weak var backgroundImage:   UIImageView!
     
 
+    //MARK: view life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyOneTF.tintColor = UIColor.clear
@@ -48,9 +52,11 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
             currencyLogoTwo = logoTwo
         }
         
-        currencyOneLabel.text =   currencyLogoOne + cr.currencyOne
+        currencyOneLabel.text =   cr.currencyOne
         currencyTwoLabel.text =   cr.currencyTwo
-        currencyOneTF.text =      String(1.00)
+        countryOneLabel.text =    cr.countryOne
+        countryTwoLabel.text =    cr.countryTwo
+        currencyOneTF.text =      currencyLogoOne + String(1.00)
         currencyTwoTF.text =      currencyLogoTwo + String(cr.rate * 1.00)
         let flgImageOne =         cr.currencyOne
         flagOne.image =           UIImage(named: flgImageOne)
@@ -74,25 +80,15 @@ class ConverterViewController : UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func currencyOneTFChanged(textField: UITextField) {
-        if (!(currencyOneTF.text?.isEmpty)!){
-            let value = Double(currencyOneTF.text!)
+        let currencyOneValue = currencyOneTF.text?.replacingOccurrences(of: currencyLogoOne, with: "")
+        if (!(currencyOneValue!.isEmpty)){
+            let value = Double(currencyOneValue!)
             calculatedValue = (cr.rate * value!)
+            currencyOneTF.text = currencyLogoOne + currencyOneValue!
         }
         else {
+            currencyOneTF.text = ""
             currencyTwoTF.text = currencyLogoTwo
         }
-    }
-}
-
-extension UIImageView
-{
-    func addBlurEffect()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.layer.opacity = 0.85
-        blurEffectView.frame = (superview?.bounds)!
-
-        self.addSubview(blurEffectView)
     }
 }

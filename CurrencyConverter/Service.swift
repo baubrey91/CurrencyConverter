@@ -10,6 +10,7 @@ import Foundation
 
 class Service {
 
+    //singleton
     static let sharedInstance = Service()
     
     func getJSON(_ url: String, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {

@@ -12,35 +12,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
-        
-        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]! 
+        let imgString = countryArray[indexPath.row]
+
+        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]!
         
         if let rate = rateDic[countryArray[indexPath.row]]  {
-            cell.rateLabel.text = String(describing: rate)
+            cell.rateLabel.text = String(describing: rate.roundTo(places: 4))
         } else {
             cell.rateLabel.text = "-"
         }
-        
-        setCellColor(cell: cell, blackBackground: (indexPath.row % 2 == 0))
+        cell.flagImage.image = UIImage(named: imgString)
+
         
         return cell
-    }
-    
-    func setCellColor(cell: RateTableCell, blackBackground: Bool) {
-        
-        cell.backgroundColor = UIColor.clear
-        cell.countryLabel.textColor = UIColor.white
-        cell.rateLabel.textColor = UIColor.white
-//        if (blackBackground) {
-//            cell.backgroundColor = UIColor.black
-//            cell.countryLabel.textColor = UIColor.white
-//            cell.rateLabel.textColor = UIColor.white
-//        } else {
-//            cell.backgroundColor = UIColor.lightGray
-//            cell.countryLabel.textColor = UIColor.black
-//            cell.rateLabel.textColor = UIColor.black
-//        }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +39,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         let currencyTwo = countryArray[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "converterViewController") as! ConverterViewController
-        let cr = CurrencyRate(CurrencyOne: currentCountry, CurrencyTwo: currencyTwo, CountryOne: countryDic[currentCountry]!, CountryTwo: countryDic[currencyTwo]!, Rate: rate as! Double)
+        let cr = CurrencyRate(CurrencyOne: currentCountry, CurrencyTwo: currencyTwo, CountryOne: countryDic[currentCountry]!, CountryTwo: countryDic[currencyTwo]!, Rate: rate)
         vc.cr = cr
         
         self.navigationController?.pushViewController(vc, animated: true)

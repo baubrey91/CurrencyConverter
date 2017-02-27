@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     
     let service = Service.sharedInstance
     
-    var rateDic: NSDictionary = [:]
+    var rateDic = [String:Double]()
     var currentCountry = "AUD" {
         didSet {
             self.title = currentCountry
@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
         service.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
                 let rates = json["rates"] as? NSDictionary
-                self.rateDic = rates!
+                self.rateDic = rates! as! [String : Double]
                 self.tableView.reloadData()
                 self.activityMonitor.stopAnimating()
             }
