@@ -14,7 +14,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
         let imgString = countryArray[indexPath.row]
 
-        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]!
+        cell.countryLabel.text = countryArray[indexPath.row]
         
         if let rate = rateDic[countryArray[indexPath.row]]  {
             cell.rateLabel.text = String(describing: rate.roundTo(places: 4))

@@ -43,10 +43,17 @@ class HistoryViewController: HomeViewController {
         activityMonitor.startAnimating()
         service.getJSON((HISTORY_URL + strDate), completionHandler: {
             json in DispatchQueue.main.async{
-                let rates = json["rates"] as? NSDictionary
-                self.rateDic = rates! as! [String : Double]
-                self.tableView.reloadData()
-                self.activityMonitor.stopAnimating()
+                if let rates = json["rates"] as? NSDictionary{
+                    self.rateDic = rates as! [String : Double]
+                    self.tableView.reloadData()
+                    self.activityMonitor.stopAnimating()
+                } else {
+                    let ac = UIAlertController(title: "UH OH!", message: "Something went wrong, please check internet connection", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(ac, animated: true, completion: nil)
+                    self.activityMonitor.stopAnimating()
+                    print(json)
+                }
             }
         })
     }
@@ -55,7 +62,7 @@ class HistoryViewController: HomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
         let imgString = countryArray[indexPath.row]
         
-        cell.countryLabel.text = countryArray[indexPath.row] + "-" + countryDic[countryArray[indexPath.row]]!
+        cell.countryLabel.text = countryArray[indexPath.row]
         
         if let rate = rateDic[countryArray[indexPath.row]] {
             cell.rateLabel.text = String(describing: rate.roundTo(places:4))

@@ -49,10 +49,17 @@ class HomeViewController: UIViewController {
         activityMonitor.startAnimating()
         service.getJSON((LATEST_URL + currentCountry), completionHandler: {
             json in DispatchQueue.main.async {
-                let rates = json["rates"] as? NSDictionary
-                self.rateDic = rates! as! [String : Double]
-                self.tableView.reloadData()
-                self.activityMonitor.stopAnimating()
+                if let rates = json["rates"] as? NSDictionary{
+                    self.rateDic = rates as! [String : Double]
+                    self.tableView.reloadData()
+                    self.activityMonitor.stopAnimating()
+                } else {
+                    let ac = UIAlertController(title: "UH OH!", message: "Something went wrong, please check internet connection", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.activityMonitor.stopAnimating()
+                    self.present(ac, animated: true, completion: nil)
+                    print(json)
+                }
             }
         })
     }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3901B4021E63FEBE00DE0FCF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3901B4011E63FEBE00DE0FCF /* Helper.swift */; };
+		39854E2E1E67E66000AD77B4 /* CustomTabBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39854E2D1E67E66000AD77B4 /* CustomTabBarTransition.swift */; };
+		39854E311E67E71A00AD77B4 /* GrowShrinkTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39854E301E67E71A00AD77B4 /* GrowShrinkTransition.swift */; };
 		39BE07461E541D9B00A73413 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE07451E541D9B00A73413 /* HistoryViewController.swift */; };
 		39C29C761E25DDFE003AF854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C751E25DDFE003AF854 /* AppDelegate.swift */; };
 		39C29C781E25DDFE003AF854 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C29C771E25DDFE003AF854 /* HomeViewController.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		3901B4011E63FEBE00DE0FCF /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		39854E2D1E67E66000AD77B4 /* CustomTabBarTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarTransition.swift; sourceTree = "<group>"; };
+		39854E301E67E71A00AD77B4 /* GrowShrinkTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowShrinkTransition.swift; sourceTree = "<group>"; };
 		39BE07451E541D9B00A73413 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		39C29C721E25DDFE003AF854 /* CurrencyConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C29C751E25DDFE003AF854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39854E2F1E67E6D200AD77B4 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				39854E2D1E67E66000AD77B4 /* CustomTabBarTransition.swift */,
+				39854E301E67E71A00AD77B4 /* GrowShrinkTransition.swift */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
 		39BE07471E54208900A73413 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +173,7 @@
 				39BE074B1E5420E500A73413 /* Views */,
 				39BE07481E54209F00A73413 /* Controllers */,
 				39BE07471E54208900A73413 /* Model */,
+				39854E2F1E67E6D200AD77B4 /* Transitions */,
 				39C29CA81E270536003AF854 /* Service.swift */,
 				39C29C791E25DDFE003AF854 /* Main.storyboard */,
 				CAED416A1E4CF02600728C24 /* Other */,
@@ -340,9 +354,11 @@
 				39C29C761E25DDFE003AF854 /* AppDelegate.swift in Sources */,
 				CAED41651E4BF6C300728C24 /* HomeCollection:Table.swift in Sources */,
 				39C29CAB1E2714B3003AF854 /* RateTableCell.swift in Sources */,
+				39854E2E1E67E66000AD77B4 /* CustomTabBarTransition.swift in Sources */,
 				39BE07461E541D9B00A73413 /* HistoryViewController.swift in Sources */,
 				3901B4021E63FEBE00DE0FCF /* Helper.swift in Sources */,
 				39C29CAD1E285D31003AF854 /* ConverterViewController.swift in Sources */,
+				39854E311E67E71A00AD77B4 /* GrowShrinkTransition.swift in Sources */,
 				39C29CA71E25E12E003AF854 /* CurrencyRate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

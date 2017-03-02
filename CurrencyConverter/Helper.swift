@@ -14,7 +14,7 @@ extension UIImageView
     {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.layer.opacity = 1
+        blurEffectView.layer.opacity = 0.8
         blurEffectView.frame = (superview?.bounds)!
         
         self.addSubview(blurEffectView)
