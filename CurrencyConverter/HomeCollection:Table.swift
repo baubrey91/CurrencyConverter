@@ -44,6 +44,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {

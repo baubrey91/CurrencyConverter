@@ -23,6 +23,14 @@ class HomeViewController: UIViewController {
             self.title = currentCountry
         }
     }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(HomeViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     let countryDic : [String:String] = ["AUD":"Australia", "BGN":"Bulgaria", "BRL":"Brazil", "CAD":"Canada", "CHF":"Switzerland", "CNY":"Chinese Yuan", "CZK":"Czech Republic", "DKK":"Denmark", "EUR":"Euro", "GBP":"British Pound", "HKD":"Hong Kong Dollar", "HRK":"Croatia", "HUF":"Hungary", "IDR":"Indonesia", "ILS":"Israel", "INR":"India", "JPY":"Japan", "KRW":"South Korea", "MXN":"Mexico", "MYR":"Malaysia", "NOK":"Norway", "NZD":"New Zealand", "PHP":"Philippines", "PLN":"Poland", "RON":"Romania", "RUB":"Russia", "SEK":"Sweden", "SGD":"Singapore", "THB":"Thailand", "TRY":"Turkey", "USD":"United States", "ZAR":"South Africa"]
 
     var countryArray = [String]()
@@ -34,6 +42,7 @@ class HomeViewController: UIViewController {
         activityMonitor.hidesWhenStopped = true
         countryArray = Array(countryDic.keys).sorted()
         backgroundImage.addBlurEffect()
+        self.tableView.addSubview(self.refreshControl)
         loadCurrency()
     }
     
@@ -62,5 +71,12 @@ class HomeViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        loadCurrency()
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
 }
