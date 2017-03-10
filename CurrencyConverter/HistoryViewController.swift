@@ -13,13 +13,12 @@ class HistoryViewController: HomeViewController {
     
     //MARK: variables
     let HISTORY_URL  = "https://api.fixer.io/"
-    var dateFormatter = DateFormatter()
-    let today = NSDate() as Date
     var strDate = "2001-01-01"
 
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func datePicked(_ sender: Any) {
+        let dateFormatter = DateFormatter()
         strDate = dateFormatter.string(from: datePicker.date)
         loadCurrency()
         //self.selectedDate.text = strDate
@@ -27,6 +26,8 @@ class HistoryViewController: HomeViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dateFormatter = DateFormatter()
+        let today = NSDate() as Date
         dateFormatter.dateFormat = "yyyy-MM-dd"
         strDate = dateFormatter.string(from: today)
         datePicker.date = today
@@ -58,21 +59,21 @@ class HistoryViewController: HomeViewController {
         })
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
-        let imgString = countryArray[indexPath.row]
-        
-        cell.countryLabel.text = countryArray[indexPath.row]
-        
-        if let rate = rateDic[countryArray[indexPath.row]] {
-            cell.rateLabel.text = String(describing: rate.roundTo(places:4))
-        } else {
-            cell.rateLabel.text = "-"
-        }
-        cell.flagImage.image = UIImage(named: imgString)
-
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "RateTableCell", for: indexPath) as! RateTableCell
+//        let imgString = countryArray[indexPath.row]
+//        
+//        cell.countryLabel.text = countryArray[indexPath.row]
+//        
+//        if let rate = rateDic[countryArray[indexPath.row]] {
+//            cell.rateLabel.text = String(describing: rate.roundTo(places:4))
+//        } else {
+//            cell.rateLabel.text = "-"
+//        }
+//        cell.flagImage.image = UIImage(named: imgString)
+//
+//        return cell
+//    }
 }
 
 
