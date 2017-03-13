@@ -17,7 +17,7 @@ In main screen choose history in bottom right to see history rates of Euro
 
 ## Video Walkthrough 
 
-<a href="https://gifyu.com/image/SaEz"><img src="https://gifyu.com/images/currensee.gif" alt="currensee.gif" border="0" /></a><br /><br />
+<a href="https://gifyu.com/image/SaEw"><img src="https://gifyu.com/images/currenseereadme.gif" alt="currenseereadme.gif" border="0" /></a><br /><br />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
